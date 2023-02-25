@@ -1,0 +1,90 @@
+/* Global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  background-image: url(../images/Weatha.jpg);
+  background-size:cover;
+}
+
+/* Form */
+.form {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.input-group {
+  width: 100%;
+}
+
+.input-group .form-input {
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.input-group .search-button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+/* Today */
+#today {
+  padding: .5rem;
+  border-radius: 0.25rem;
+}
+
+#today .card {
+  border: none;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+
+Forecast #forecast .col {
+  padding: 0;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 7px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin: 0.5rem;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 575px) {
+  .forecast-card {
+    width: 100%;
+  }
+}
