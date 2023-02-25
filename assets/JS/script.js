@@ -38,6 +38,12 @@ function getCurrentWeather(city) {
   });
 }
 
+// Define the addToSearchHistory function
+function addToSearchHistory(query) {
+  //add the search query to the search history goes here
+  console.log(`Search query '${query}' has been added to the search history.`);
+}
+
 // function to get 5-day forecast for a city
 function getFiveDayForecast(city) {
   const queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
