@@ -10,6 +10,7 @@ function getCurrentWeather(city) {
     method: 'GET'
   }).then(function(response) { // handle successful response
     const city = response.name;
+    const country = response.sys.country;
     const date = moment().format('dddd, MMMM Do, YYYY');
     const temp = response.main.temp;
     const humidity = response.main.humidity;
@@ -22,7 +23,7 @@ function getCurrentWeather(city) {
     $('#today').append(`
       <div class="card">
         <div class="card-body">
-          <h2>${city} (${date}) <img src="${iconURL}" alt="${response.weather[0].description}"></h2>
+          <h2>${city}, ${country} (${date}) <img src="${iconURL}" alt="${response.weather[0].description}"></h2>
           <p>Temperature: ${temp} °C</p>
           <p>Humidity: ${humidity}%</p>
           <p>Wind Speed: ${windSpeed} m/s</p>
@@ -81,16 +82,59 @@ function getFiveDayForecast(city) {
   });
 }
 
+function updateDefaultCities(cityName) {
+  const cities = document.querySelectorAll('.city-btn');
+  let isCityFound = false;
+  
+  // check if city already exists
+  cities.forEach(city => {
+  if (city.getAttribute('data-city') === cityName) {
+  isCityFound = true;
+  return;
+  }
+  });
+  
+  // if city not found, add to list
+  if (!isCityFound) {
+  // shift existing city names and data attributes down
+  for (let i = cities.length - 1; i >= 1; i--) {
+  const currentCity = cities[i];
+  const prevCity = cities[i - 1];
+  currentCity.innerText = prevCity.innerText;
+  currentCity.setAttribute('data-city', prevCity.getAttribute('data-city'));
+}
+
+// add new city to first button
+const firstCityBtn = cities[0];
+firstCityBtn.innerText = cityName;
+firstCityBtn.setAttribute('data-city', cityName.toLowerCase());
+}
+}
+
+// function to handle click event on city buttons
+function handleCityButtonClick(event) {
+const cityName = event.target.getAttribute('data-city');
+getCurrentWeather(cityName);
+}
+
+// add event listeners to city buttons
+const cityButtons = document.querySelectorAll('.city-btn');
+cityButtons.forEach(button => {
+button.addEventListener('click', handleCityButtonClick);
+});
+
 // function to handle search form submission
 function handleSearchFormSubmit(event) {
-  event.preventDefault();
-  const searchTerm = $('#search-input').val();
-  if (searchTerm) {
-    // add the search term to search history
-    addToSearchHistory(searchTerm);
-    // get current weather for the city
-    getCurrentWeather(searchTerm);
-  }
+event.preventDefault();
+const searchTerm = $('#search-input').val();
+if (searchTerm) {
+// add the search term to search history
+addToSearchHistory(searchTerm);
+// get current weather for the city
+getCurrentWeather(searchTerm);
+// update default cities list
+updateDefaultCities(searchTerm);
+}
 }
 
 // add an event listener to the search form
