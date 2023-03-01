@@ -7,7 +7,14 @@ https://github.com/Jakinlade/SkyWatch_Weather_App
 https://jakinlade.github.io/SkyWatch_Weather_App
 
 ## Description
-This Weather Dashboard is a web app that displays current weather and five-day forecast data for a location, using OpenWeatherMap API. It features a search input for users to specify a city and view the corresponding weather information. The app also includes a search history for user convenience.
+This weather app allows users to search for current weather conditions and forecasts for cities around the world using the OpenWeather API. Users can enter a city name or select a city from the list of default cities. The app displays the city name, country, temperature, weather description, and an icon representing the current weather conditions.
+
+The app also includes a local storage feature that saves the user's recent searches, which are displayed as buttons for easy access to their previously searched cities. Users can click on these buttons to quickly view the current weather conditions for that city.
+
+Overall, this weather app provides a convenient and user-friendly way to access up-to-date weather information for any city in the world.
+
+## App Screenshot
+![OpenWeatherMap](./assets/images/screencapture-127-0-0-1-5500-Weather-App-index-html-2023-02-26-16_40_06.png)
 
 ## Code example
 I used an Ajax call to grab the relevant data from the OpenWeatherMap API, then stored them into variables to display.
